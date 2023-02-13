@@ -48,11 +48,8 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const registerUser = async (data) => {
-    console.log(data);
-
     try {
-      const response = await api.post("/users", data);
-      console.log(response.data);
+      await api.post("/users", data);
 
       navigate("/");
     } catch (error) {

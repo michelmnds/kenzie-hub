@@ -8,6 +8,8 @@ export const DashboardGlobalContainer = styled.div`
   flex-direction: column;
 
   align-items: center;
+
+  overflow-x: hidden;
 `;
 
 export const UserInfos = styled.div`

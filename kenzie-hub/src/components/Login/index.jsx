@@ -41,7 +41,6 @@ export const Login = () => {
     try {
       const response = await api.post("/sessions", data);
 
-      console.log(response.data);
       window.localStorage.clear();
       window.localStorage.setItem("@TOKEN", response.data.token);
       window.localStorage.setItem("@USERID", response.data.user.id);
