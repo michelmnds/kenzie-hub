@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { token } from "../pages/Dashboard";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext();
 
@@ -30,6 +31,7 @@ export const UserProvider = ({ children }) => {
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
+      toast.warning("Dados inválidos");
     }
   };
 
