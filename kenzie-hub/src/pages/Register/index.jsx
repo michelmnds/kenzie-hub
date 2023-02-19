@@ -1,6 +1,6 @@
 import "./style.js";
 import { api } from "../../services/api.js";
-import { HeaderRegister } from "../HeaderRegister/index.jsx";
+import { HeaderRegister } from "../../components/HeaderRegister/index.jsx";
 import {
   RegisterGlobalContainer,
   RegisterContainer,
@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext.jsx";
 
 const schema = yup
   .object({
@@ -39,29 +41,26 @@ const formState = {
 
 export const Register = () => {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
 
-  const registerUser = async (data) => {
-    try {
-      await api.post("/users", data);
+  const { registerUser } = useContext(UserContext);
 
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
+  const submit = (data) => {
+    registerUser(data);
+    reset();
   };
 
   return (
     <RegisterGlobalContainer>
       <HeaderRegister></HeaderRegister>
 
-      <RegisterContainer onSubmit={handleSubmit(registerUser)}>
+      <RegisterContainer onSubmit={handleSubmit(submit)}>
         <TextContainer>
           <p>Crie sua conta</p>
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { token } from "../components/Dashboard";
+import { token } from "../pages/Dashboard";
 
 export const api = axios.create({
   baseURL: "https://kenziehub.herokuapp.com",

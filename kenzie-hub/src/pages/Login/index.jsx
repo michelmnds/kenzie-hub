@@ -1,6 +1,6 @@
 import "./style.js";
 
-import { Header } from "../Header/index.jsx";
+import { Header } from "../../components/Header/index.jsx";
 import { ButtonRegisterLogin, LoginGlobalContainer } from "./style.js";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage } from "../Register/style.js";
@@ -13,10 +13,11 @@ import {
 } from "./style.js";
 
 import { useForm } from "react-hook-form";
-import { api } from "../../services/api.js";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext.jsx";
 
 const schema = yup
   .object({
@@ -31,30 +32,24 @@ const formState = {
 
 export const Login = () => {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-  const navigate = useNavigate();
 
-  const loginUser = async (data) => {
-    try {
-      const response = await api.post("/sessions", data);
+  const { loginUser } = useContext(UserContext);
 
-      window.localStorage.clear();
-      window.localStorage.setItem("@TOKEN", response.data.token);
-      window.localStorage.setItem("@USERID", response.data.user.id);
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
+  const submit = (data) => {
+    loginUser(data);
+    reset();
   };
 
   return (
     <LoginGlobalContainer>
       <Header></Header>
 
-      <LoginContainer onSubmit={handleSubmit(loginUser)}>
+      <LoginContainer onSubmit={handleSubmit(submit)}>
         <p>Login</p>
 
         <InputContainer>

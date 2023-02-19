@@ -1,15 +1,12 @@
 import "./style.js";
 import logo from "../../assets/img/Logo.png";
 import { Div, ButtonHeader, Line } from "./style.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../providers/UserContext.jsx";
+import { useContext } from "react";
 
 export const HeaderDashboard = () => {
-  const navigate = useNavigate();
-
-  const logout = () => {
-    window.localStorage.clear();
-    navigate("/");
-  };
+  const { logout } = useContext(UserContext);
 
   return (
     <>
