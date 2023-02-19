@@ -52,11 +52,7 @@ export const EditModal = ({ setEditModal, editModal, techId }) => {
       <ModalView>
         <ModalHeader>
           <span>Tecnologia Detalhes</span>
-          <button
-            onClick={() => setEditModal(!editModal) || window.location.reload()}
-          >
-            X
-          </button>
+          <button onClick={() => setEditModal(!editModal)}>X</button>
         </ModalHeader>
 
         <ModalMain onSubmit={handleSubmit(update)}>

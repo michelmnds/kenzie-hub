@@ -42,9 +42,7 @@ export const Modal = ({ setModal, modal }) => {
       <ModalView>
         <ModalHeader>
           <span>Cadastrar Tecnologia</span>
-          <button onClick={() => setModal(!modal) || window.location.reload()}>
-            X
-          </button>
+          <button onClick={() => setModal(!modal)}>X</button>
         </ModalHeader>
 
         <ModalMain onSubmit={handleSubmit(submit)}>
