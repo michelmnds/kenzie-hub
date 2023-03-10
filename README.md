@@ -1,1 +1,3 @@
-# react-entrega-kenzie-hub
+# 📝 Description
+
+Fully functional and responsive 'social network'
