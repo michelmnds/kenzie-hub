@@ -29,9 +29,11 @@ export const UserProvider = ({ children }) => {
       window.localStorage.setItem("@TOKEN", response.data.token);
       window.localStorage.setItem("@USERID", response.data.user.id);
       navigate("/dashboard");
+      // eslint-disable-next-line no-restricted-globals
+      // location.reload();
     } catch (error) {
       console.log(error);
-      toast.warning("Dados inválidos");
+      toast.warning("Invalid Credentials");
     }
   };
 

@@ -14,7 +14,7 @@ export const HeaderDashboard = () => {
         <img src={logo} alt="Logo" />
 
         <Link to="/">
-          <ButtonHeader onClick={logout}>Sair</ButtonHeader>
+          <ButtonHeader onClick={logout}>Logout</ButtonHeader>
         </Link>
       </Div>
       <Line />

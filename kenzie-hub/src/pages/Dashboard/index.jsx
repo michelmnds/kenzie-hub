@@ -36,12 +36,15 @@ export const Dashboard = () => {
   const [techId, setTechId] = useState(undefined);
 
   const { techs, setTechs } = useContext(TechContext);
-  console.log("🚀 ~ file: index.jsx:39 ~ Dashboard ~ techs", techs);
-
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        const response = await api.get("/profile", token);
+        const response = await api.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        });
+
         setUser(response.data);
         setTechs(response.data.techs);
       } catch (error) {
@@ -58,7 +61,7 @@ export const Dashboard = () => {
 
       <section>
         <UserInfos>
-          <UserName>Olá, {user.name}</UserName>
+          <UserName>Welcome, {user.name}</UserName>
 
           <UserModule>{user.course_module}</UserModule>
         </UserInfos>
@@ -67,7 +70,7 @@ export const Dashboard = () => {
 
       <main>
         <TecInfo>
-          <TecTitle>Tecnologias</TecTitle>
+          <TecTitle>Technologies</TecTitle>
 
           <TecPlus onClick={() => setModal(!modal)}>+</TecPlus>
         </TecInfo>
@@ -80,8 +83,12 @@ export const Dashboard = () => {
           />
         )}
         <Techs>
-          {techs.map((tech) => {
-            {
+          {!techs.length ? (
+            <h1 style={{ marginTop: 200, fontWeight: "bolder", fontSize: 24 }}>
+              No technologies registered
+            </h1>
+          ) : (
+            techs.map((tech) => {
               return (
                 <SingleTech
                   onClick={() => setEditModal(!editModal) || setTechId(tech.id)}
@@ -91,8 +98,8 @@ export const Dashboard = () => {
                   <TechStatus>{tech.status}</TechStatus>
                 </SingleTech>
               );
-            }
-          })}
+            })
+          )}
         </Techs>
       </main>
     </DashboardGlobalContainer>

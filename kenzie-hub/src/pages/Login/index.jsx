@@ -57,18 +57,18 @@ export const Login = () => {
           <input type="text" {...register("email")} />
           <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password">Password</label>
           <input type="password" {...register("password")} />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-          <LoginButton type="submit">Entrar</LoginButton>
+          <LoginButton type="submit">Login</LoginButton>
         </InputContainer>
 
         <ButtonContainer>
-          <p>Ainda não possui uma conta?</p>
+          <p>Don't have an account yet?</p>
 
           <Link to="/register">
-            <ButtonRegisterLogin>Cadastre-se</ButtonRegisterLogin>
+            <ButtonRegisterLogin>Register</ButtonRegisterLogin>
           </Link>
         </ButtonContainer>
       </LoginContainer>

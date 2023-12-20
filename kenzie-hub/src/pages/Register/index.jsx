@@ -19,19 +19,19 @@ import { UserContext } from "../../providers/UserContext.jsx";
 
 const schema = yup
   .object({
-    name: yup.string().required("Preencha o campo do nome"),
-    email: yup.string().required("Preencha o campo do email"),
+    name: yup.string().required("Fill the name field"),
+    email: yup.string().required("Fill the email field"),
     password: yup
       .string()
-      .required("Preencha o campo da senha")
-      .matches(/.{6,}/, "Sua senha deve conter no mínimo 6 caracteres"),
+      .required("Fill the password field")
+      .matches(/.{6,}/, "Password must have at least 6 characters"),
     confirmPassword: yup
       .string()
-      .required("Preencha o campo de confirmar senha")
-      .oneOf([yup.ref("password")], "Confirme sua senha"),
-    bio: yup.string().required("Preencha o campo da bio"),
-    contact: yup.string().required("Preencha o campo do contato"),
-    course_module: yup.string().required("Preencha o campo do módulo"),
+      .required("Fill the confirm password field")
+      .oneOf([yup.ref("password")], "Confirm your password"),
+    bio: yup.string().required("Fill the bio field"),
+    contact: yup.string().required("Fill the contact field"),
+    course_module: yup.string().required("Fill the module field"),
   })
   .required();
 
@@ -62,16 +62,16 @@ export const Register = () => {
 
       <RegisterContainer onSubmit={handleSubmit(submit)}>
         <TextContainer>
-          <p>Crie sua conta</p>
+          <p>Create Account</p>
 
-          <span>Rapido e grátis, vamos nessa</span>
+          <span>Quick and free, let's go</span>
         </TextContainer>
 
         <InputsContainer>
-          <label htmlFor="name">Nome</label>
+          <label htmlFor="name">Name</label>
           <input
             {...register("name")}
-            placeholder="Digite aqui seu nome"
+            placeholder="Write down your name"
             type="text"
           />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
@@ -79,23 +79,23 @@ export const Register = () => {
           <label htmlFor="email">Email</label>
           <input
             {...register("email")}
-            placeholder="Digite aqui seu email"
+            placeholder="Write down your email"
             type="email"
           />
           <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password">Password</label>
           <input
             {...register("password")}
-            placeholder="Digite aqui sua senha"
+            placeholder="Write down your password"
             type="password"
           />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-          <label htmlFor="confirmPassword">Confirmar Senha</label>
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             {...register("confirmPassword")}
-            placeholder="Confirme sua senha"
+            placeholder="Confirm your password"
             type="password"
           />
           <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
@@ -103,32 +103,32 @@ export const Register = () => {
           <label htmlFor="bio">Bio</label>
           <input
             {...register("bio")}
-            placeholder="Fale sobre você"
+            placeholder="Talk about you"
             type="text"
           />
           <ErrorMessage>{errors.bio?.message}</ErrorMessage>
 
-          <label htmlFor="contact">Contato</label>
+          <label htmlFor="contact">Contact</label>
           <input
             {...register("contact")}
-            placeholder="Opção de contato"
+            placeholder="Contat option"
             type="text"
           />
           <ErrorMessage>{errors.contact?.message}</ErrorMessage>
 
-          <label htmlFor="module">Selecionar módulo</label>
+          <label htmlFor="module">Select module</label>
           <select {...register("course_module")}>
-            <option value="Primeiro módulo (Introdução ao Frontend)">
-              Primeiro módulo (Introdução ao Frontend)
+            <option value="First module (Frontend Introduction)">
+              First module (Frontend Introduction)
             </option>
-            <option value="Segundo módulo (Frontend Avançado)">
-              Segundo módulo (Frontend Avançado)
+            <option value="Second module (Advanced Frontend)">
+              Second module (Advanced Frontend)
             </option>
-            <option value="Terceiro módulo (Introdução ao Backend)">
-              Terceiro módulo (Introdução ao Backend)
+            <option value="Third module (Backend Introduction)">
+              Third module (Backend Introduction)
             </option>
-            <option value="Quarto módulo (Backend Avançado)">
-              Quarto módulo (Backend Avançado)
+            <option value="Fourth module (Advanced Backend)">
+              Fourth module (Advanced Backend)
             </option>
           </select>
           <ErrorMessage>{errors.course_module?.message}</ErrorMessage>

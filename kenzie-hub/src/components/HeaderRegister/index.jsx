@@ -9,7 +9,7 @@ export const HeaderRegister = () => {
       <img src={logo} alt="Logo" />
 
       <Link to="/">
-        <ButtonHeader>Voltar</ButtonHeader>
+        <ButtonHeader>Back</ButtonHeader>
       </Link>
     </Div>
   );

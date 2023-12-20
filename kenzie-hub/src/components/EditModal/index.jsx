@@ -19,7 +19,7 @@ import { ErrorMessage } from "../../pages/Register/style.js";
 
 const schema = yup
   .object({
-    title: yup.string().required("Preencha o campo do nome"),
+    title: yup.string().required("Fill the name field"),
   })
   .required();
 
@@ -39,7 +39,6 @@ export const EditModal = ({ setEditModal, editModal, techId }) => {
 
   const update = (data) => {
     updateTech(techId, data);
-    reset();
   };
 
   const remove = () => {
@@ -51,28 +50,35 @@ export const EditModal = ({ setEditModal, editModal, techId }) => {
     <ModalContainer>
       <ModalView>
         <ModalHeader>
-          <span>Tecnologia Detalhes</span>
+          <span>Technology Details</span>
           <button onClick={() => setEditModal(!editModal)}>X</button>
         </ModalHeader>
 
         <ModalMain onSubmit={handleSubmit(update)}>
-          <span>Nome do projeto</span>
+          <span>Project's name</span>
           <input type="text" {...register("title")} />
           <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
           <span>Status</span>
           <select {...register("status")}>
-            <option value="Iniciante">Iniciante</option>
-            <option value="Intermediário">Intermediário</option>
-            <option value="Avançado">Avançado</option>
+            <option value="Iniciante">Beginner</option>
+            <option value="Intermediário">Intermediary</option>
+            <option value="Avançado">Advanced</option>
           </select>
 
           <section>
-            <SubmitButton type="submit">Salvar alterações</SubmitButton>
+            <SubmitButton type="submit">Save changes</SubmitButton>
           </section>
         </ModalMain>
 
-        <DeleteButton onClick={() => remove()}>Excluir</DeleteButton>
+        <DeleteButton
+          onClick={() => {
+            remove();
+            setEditModal(!editModal);
+          }}
+        >
+          Delete
+        </DeleteButton>
       </ModalView>
     </ModalContainer>
   );

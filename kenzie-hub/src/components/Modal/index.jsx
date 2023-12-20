@@ -14,7 +14,7 @@ import { api } from "../../services/api.js";
 
 const schema = yup
   .object({
-    title: yup.string().required("Preencha o campo do nome"),
+    title: yup.string().required("Fill the name field"),
   })
   .required();
 
@@ -41,22 +41,22 @@ export const Modal = ({ setModal, modal }) => {
     <ModalContainer>
       <ModalView>
         <ModalHeader>
-          <span>Cadastrar Tecnologia</span>
+          <span>Register Technology</span>
           <button onClick={() => setModal(!modal)}>X</button>
         </ModalHeader>
 
         <ModalMain onSubmit={handleSubmit(submit)}>
-          <span>Nome</span>
+          <span>Name</span>
           <input type="text" {...register("title")} />
           <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
-          <span>Selecionar status</span>
+          <span>Select status</span>
           <select {...register("status")}>
-            <option value="Iniciante">Iniciante</option>
-            <option value="Intermediário">Intermediário</option>
-            <option value="Avançado">Avançado</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediary">Intermediary</option>
+            <option value="Advanced">Advanced</option>
           </select>
-          <button type="submit">Cadastrar Tecnologia</button>
+          <button type="submit">Submit Technology</button>
         </ModalMain>
       </ModalView>
     </ModalContainer>

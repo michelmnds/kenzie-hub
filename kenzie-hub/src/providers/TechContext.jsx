@@ -10,7 +10,7 @@ export const TechProvider = ({ children }) => {
   const registerTech = async (data) => {
     try {
       const response = await api.post("/users/techs", data);
-      toast.success("Tecnologia registrada com sucesso!");
+      toast.success("Technology added!");
       techs.push(response.data);
       setTechs(techs);
     } catch (error) {
@@ -22,7 +22,7 @@ export const TechProvider = ({ children }) => {
   const updateTech = async (id, data) => {
     try {
       await api.put(`users/techs/${id}`, data);
-      toast.success("Tecnologia atualizada com sucesso!");
+      toast.success("Technology updated!");
       const techIndex = techs.findIndex((tech) => tech.id === id);
       techs[techIndex] = { ...techs[techIndex], ...data };
       setTechs(techs);
@@ -35,7 +35,7 @@ export const TechProvider = ({ children }) => {
   const deleteTech = async (id) => {
     try {
       await api.delete(`/users/techs/${id}`);
-      toast.success("Tecnologia excluida com sucesso!");
+      toast.success("Technology deleted!");
       const newTechs = techs.filter((tech) => tech.id !== id);
       setTechs(newTechs);
     } catch (error) {
